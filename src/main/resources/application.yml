@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: carticket-artemis
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:7878
+  cloud:
+    config:
+      username: user@cloud
+      password: password@cloud.vn
+server:
+  port: ${SERVER_PORT}
+app:
+  api-url:
+    confirm-payment: ${APP_APIURL_CONFIRMPAYMENT}
+encrypt:
+###------ for symmetric cryptography
+#key: ${ENCRYPT_KEY:9y$B&E)H@McQfTjWnZr4u7w!z%C*F-JaNdRgUkXp2s5v8y/A?D(G+KbPeShVmYq3}
+
+##------ for asymmetric cryptography
+  key-store:
+    location: classpath:key/myApiTutorialKey.jks
+    password: a1b2c3d4
+    alias: myApiTutorialKey
